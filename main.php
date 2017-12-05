@@ -165,6 +165,10 @@ while (!$idFormatIdEnoughDigits) {      // dokud není potvrzeno, že počet č�
                                                     break;                                         
                         // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------                                          
                         // TABULKY V6 ONLY
+                        case ["contacts","idcontact"]:$idFieldSrcRec = $hodnota;                // uložení hodnoty 'idcontact' pro následné použití v 'contFieldVals'
+                                                    break;
+                        case ["tickets","idticket"]:$idFieldSrcRec = $hodnota;                  // uložení hodnoty 'idticket' pro následné použití v 'tickFieldVals'
+                                                    break;
                         case ["crmRecords", "idcrmrecord"]:$idFieldSrcRec = $hodnota;           // uložení hodnoty 'idcrmrecord' pro následné použití v 'crmFieldVals'
                                                     break;
                         case ["crmFields", "idcrmfield"]:
@@ -176,6 +180,7 @@ while (!$idFormatIdEnoughDigits) {      // dokud není potvrzeno, že počet č�
                         case ["crmFields", "name"]: $fieldRow["name"] = $hodnota;               // název klíče záznamu do pole formulářových polí
                                                     break;                                      // sloupec "name" se nepropisuje do výstupní tabulky "fields"                                                                 
                         // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------                                                  
+                        default:                    break;                                      // sloupec nezpracováváme (standardní mód)
                     }
                     $colId++;                                                       // přechod na další sloupec (buňku) v rámci řádku                
                 }   // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------              
