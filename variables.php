@@ -72,44 +72,6 @@ $tabsInOut = [
     6                   =>  array_merge($tabsInOutV56_part1, $tabsInOutV6_part1, $tabsInOutV56_part2, $tabsInOutV6_part2)
 ];
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// jen výstupní tabulky
-$tabsOutOnlyV56 = [         // tabulky, které vytváří transformace a objevují se až na výstupu (nejsou ve vstupním bucketu KBC) používané u Daktely v5 i v6
-    "fieldValues"       =>  [   "idfieldvalue"          => ["instPrf" => 1, "pk" => 1],
-                                "idrecord"              => ["instPrf" => 1, "fk" => "records"],
-                                "idfield"               => ["instPrf" => 1, "fk" => "fields"],
-                                "value"                 => ["instPrf" => 0]
-                            ]
-];
-$tabsOutOnlyV6 = [          // tabulky, které vytváří transformace a objevují se až na výstupu (nejsou ve vstupním bucketu KBC) používané pouze u Daktely v6
-    "contFieldVals"     =>  [   "idcontfieldval"        => ["instPrf" => 1, "pk" => 1],
-                                "idcontact"             => ["instPrf" => 1, "fk" => "contacts"],
-                                "idfield"               => ["instPrf" => 1, "fk" => "fields"],
-                                "value"                 => ["instPrf" => 0]
-                            ],
-    "tickFieldVals"     =>  [   "idtickfieldval"        => ["instPrf" => 1, "pk" => 1],
-                                "idticket"              => ["instPrf" => 1, "fk" => "tickets"],
-                                "idfield"               => ["instPrf" => 1, "fk" => "fields"],
-                                "value"                 => ["instPrf" => 0]
-                            ],                                                  // hodnoty formulářových polí z tabulky "tickets"
-    "crmFieldVals"      =>  [   "idcrmfieldval"         => ["instPrf" => 1, "pk" => 1],
-                                "idcrmrecord"           => ["instPrf" => 1, "fk" => "crmRecords"],
-                                "idfield"               => ["instPrf" => 1, "fk" => "fields"],
-                                "value"                 => ["instPrf" => 0]
-                            ]                                                   // hodnoty z pole "item" tabulky "activities"
-];
-$tabsOutOnly = [
-    5                   =>  $tabsOutOnlyV56,
-    6                   =>  array_merge($tabsOutOnlyV56, $tabsOutOnlyV6)
-];
-// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// parametry parsování JSON řetězců záznamů z formulářových polí do out-only tabulek hodnot formulářových polí
-$jsonFieldsOuts = [     // <vstupní tabulka kde se nachází form. pole> => [<název out-only tabulky hodnot form. polí>, <umělý inkrementální index hodnot form. polí>]
-    "records"       =>  "fieldValues",
-    "contacts"      =>  "contFieldVals",
-    "tickets"       =>  "tickFieldVals",
-    "crmRecords"    =>  "crmFieldVals"
-];
-// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // jen vstupní tabulky
 $tabsInOnlyV5  = []; 
 $tabsInOnlyV56 = [
@@ -204,6 +166,44 @@ $tabsInOnlyV6  = [
 $tabsInOnly = [
     5                   =>  array_merge($tabsInOnlyV5, $tabsInOnlyV56),
     6                   =>  array_merge($tabsInOnlyV56, $tabsInOnlyV6)
+];
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// jen výstupní tabulky
+$tabsOutOnlyV56 = [         // tabulky, které vytváří transformace a objevují se až na výstupu (nejsou ve vstupním bucketu KBC) používané u Daktely v5 i v6
+    "fieldValues"       =>  [   "idfieldvalue"          => ["instPrf" => 1, "pk" => 1],
+                                "idrecord"              => ["instPrf" => 1, "fk" => "records"],
+                                "idfield"               => ["instPrf" => 1, "fk" => "fields"],
+                                "value"                 => ["instPrf" => 0]
+                            ]
+];
+$tabsOutOnlyV6 = [          // tabulky, které vytváří transformace a objevují se až na výstupu (nejsou ve vstupním bucketu KBC) používané pouze u Daktely v6
+    "contFieldVals"     =>  [   "idcontfieldval"        => ["instPrf" => 1, "pk" => 1],
+                                "idcontact"             => ["instPrf" => 1, "fk" => "contacts"],
+                                "idfield"               => ["instPrf" => 1, "fk" => "fields"],
+                                "value"                 => ["instPrf" => 0]
+                            ],
+    "tickFieldVals"     =>  [   "idtickfieldval"        => ["instPrf" => 1, "pk" => 1],
+                                "idticket"              => ["instPrf" => 1, "fk" => "tickets"],
+                                "idfield"               => ["instPrf" => 1, "fk" => "fields"],
+                                "value"                 => ["instPrf" => 0]
+                            ],                                                  // hodnoty formulářových polí z tabulky "tickets"
+    "crmFieldVals"      =>  [   "idcrmfieldval"         => ["instPrf" => 1, "pk" => 1],
+                                "idcrmrecord"           => ["instPrf" => 1, "fk" => "crmRecords"],
+                                "idfield"               => ["instPrf" => 1, "fk" => "fields"],
+                                "value"                 => ["instPrf" => 0]
+                            ]                                                   // hodnoty z pole "item" tabulky "activities"
+];
+$tabsOutOnly = [
+    5                   =>  $tabsOutOnlyV56,
+    6                   =>  array_merge($tabsOutOnlyV56, $tabsOutOnlyV6)
+];
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// parametry parsování JSON řetězců záznamů z formulářových polí do out-only tabulek hodnot formulářových polí
+$jsonFieldsOuts = [     // <vstupní tabulka kde se nachází form. pole> => [<název out-only tabulky hodnot form. polí>, <umělý inkrementální index hodnot form. polí>]
+    "records"       =>  "fieldValues",
+    "contacts"      =>  "contFieldVals",
+    "tickets"       =>  "tickFieldVals",
+    "crmRecords"    =>  "crmFieldVals"
 ];
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // jen vstupní sloupce
