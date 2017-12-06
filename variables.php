@@ -53,20 +53,7 @@ $tabsInOutV6_part1  = [
     // skupina 2 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     // skupina 3 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     // skupina 4 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    "contacts"          =>  [   "idcontact"             => ["instPrf" => 1, "pk" => 1],
-                                "name"                  => ["instPrf" => 0],
-                                "title"                 => ["instPrf" => 0, "tt" => 1],
-                                "firstname"             => ["instPrf" => 0],
-                                "lastname"              => ["instPrf" => 0],
-                                "idaccount"             => ["instPrf" => 1, "fk" => "accounts"],
-                                "iduser"                => ["instPrf" => 1, "fk" => "users"],
-                                "description"           => ["instPrf" => 0],
-                                "deleted"               => ["instPrf" => 0],
-                                "idinstance"            => ["instPrf" => 0, "fk" => "instances"],
-                                "form"                  => ["instPrf" => 0, "json" => 1],
-                                "number"                => ["instPrf" => 0]
-                            ]
-];
+    ];
 $tabsInOutV5  = [
     // skupina 3 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ];
@@ -196,6 +183,19 @@ $tabsInOnlyV56 = [
                             ]
 ];
 $tabsInOnlyV6  = [
+    "contacts"          =>  [   "idcontact"             => ["instPrf" => 1, "pk" => 1],
+                                "name"                  => ["instPrf" => 0],
+                                "title"                 => ["instPrf" => 0, "tt" => 1],
+                                "firstname"             => ["instPrf" => 0],
+                                "lastname"              => ["instPrf" => 0],
+                                "idaccount"             => ["instPrf" => 1, "fk" => "accounts"],
+                                "iduser"                => ["instPrf" => 1, "fk" => "users"],
+                                "description"           => ["instPrf" => 0],
+                                "deleted"               => ["instPrf" => 0],
+                                "idinstance"            => ["instPrf" => 0, "fk" => "instances"],
+                                "form"                  => ["instPrf" => 0, "json" => 1],
+                                "number"                => ["instPrf" => 0]
+                            ],
     "crmFields"         =>  [   "idcrmfield"            => ["instPrf" => 1],
                                 "title"                 => ["instPrf" => 0],
                                 "idinstance"            => ["instPrf" => 0],
