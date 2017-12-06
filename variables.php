@@ -72,27 +72,14 @@ $tabsInOut = [
     6                   =>  array_merge($tabsInOutV56_part1, $tabsInOutV6_part1, $tabsInOutV56_part2, $tabsInOutV6_part2)
 ];
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// jen vstupní tabulky
+// jen vstupní tabulky      !! nutno dodržet pořadí: 1) fields + crmFields (nutno prohledat hned na záčátku);  2) ostatní tabulky
 $tabsInOnlyV5  = []; 
-$tabsInOnlyV56 = [
-    "fields"            =>  [   "idfield"               =>  ["instPrf" => 1, "pk" => 1],
-                                "title"                 =>  ["instPrf" => 0, "tt" => 1],
-                                "idinstance"            =>  ["instPrf" => 0, "fk" => "instances"],
-                                "name"                  =>  ["instPrf" => 0]
-                            ],
-    "records"           =>  [   "idrecord"              =>  ["instPrf" => 1, "pk" => 1],
-                            "iduser"                =>  ["instPrf" => 1, "fk" => "users"],
-                            "idqueue"               =>  ["instPrf" => 1, "fk" => "queues"],
-                            "idstatus"              =>  ["instPrf" => 1, "fk" => "statuses"],
-                            "iddatabase"            =>  ["instPrf" => 1, "fk" => "databases"],
-                            "number"                =>  ["instPrf" => 0],
-                            "idcall"                =>  ["instPrf" => 1, "fk" => "calls"],
-                            "action"                =>  ["instPrf" => 0],
-                            "edited"                =>  ["instPrf" => 0, "ti" => 1],
-                            "created"               =>  ["instPrf" => 0],
-                            "idinstance"            =>  ["instPrf" => 0],
-                            "form"                  =>  ["instPrf" => 0, "json" => 0]               // "json" => <0/1> ~ jen rozparsovat / rozparsovat a pokračovat ve zpracování hodnoty
-                        ]
+$tabsInOnlyV56_part1 = [
+    "fields"            =>  [   "idfield"           =>  ["instPrf" => 1, "pk" => 1],
+                                "title"             =>  ["instPrf" => 0, "tt" => 1],
+                                "idinstance"        =>  ["instPrf" => 0, "fk" => "instances"],
+                                "name"              =>  ["instPrf" => 0]
+                            ]
 ];
 $tabsInOnlyV6  = [
     "contacts"          =>  [   "idcontact"             => ["instPrf" => 1, "pk" => 1],
@@ -163,9 +150,24 @@ $tabsInOnlyV6  = [
                                 "form"                  => ["instPrf" => 0, "json" => 0]
                             ]
 ];
+$tabsInOnlyV56_part2 = [
+    "records"           =>  [   "idrecord"              =>  ["instPrf" => 1, "pk" => 1],
+                            "iduser"                =>  ["instPrf" => 1, "fk" => "users"],
+                            "idqueue"               =>  ["instPrf" => 1, "fk" => "queues"],
+                            "idstatus"              =>  ["instPrf" => 1, "fk" => "statuses"],
+                            "iddatabase"            =>  ["instPrf" => 1, "fk" => "databases"],
+                            "number"                =>  ["instPrf" => 0],
+                            "idcall"                =>  ["instPrf" => 1, "fk" => "calls"],
+                            "action"                =>  ["instPrf" => 0],
+                            "edited"                =>  ["instPrf" => 0, "ti" => 1],
+                            "created"               =>  ["instPrf" => 0],
+                            "idinstance"            =>  ["instPrf" => 0],
+                            "form"                  =>  ["instPrf" => 0, "json" => 0]               // "json" => <0/1> ~ jen rozparsovat / rozparsovat a pokračovat ve zpracování hodnoty
+                        ]
+];
 $tabsInOnly = [
-    5                   =>  array_merge($tabsInOnlyV5, $tabsInOnlyV56),
-    6                   =>  array_merge($tabsInOnlyV56, $tabsInOnlyV6)
+    5                   =>  array_merge($tabsInOnlyV5, $tabsInOnlyV56_part1, $tabsInOnlyV56_part2),
+    6                   =>  array_merge($tabsInOnlyV56_part1, $tabsInOnlyV6, $tabsInOnlyV56_part2)
 ];
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // jen výstupní tabulky
