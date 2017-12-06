@@ -82,6 +82,11 @@ $tabsInOnlyV56_part1 = [
                             ]
 ];
 $tabsInOnlyV6  = [
+    "crmFields"         =>  [   "idcrmfield"            => ["instPrf" => 1],
+                                "title"                 => ["instPrf" => 0],
+                                "idinstance"            => ["instPrf" => 0],
+                                "name"                  => ["instPrf" => 0]
+                            ],
     "contacts"          =>  [   "idcontact"             => ["instPrf" => 1, "pk" => 1],
                                 "name"                  => ["instPrf" => 0],
                                 "title"                 => ["instPrf" => 0, "tt" => 1],
@@ -94,12 +99,7 @@ $tabsInOnlyV6  = [
                                 "idinstance"            => ["instPrf" => 0, "fk" => "instances"],
                                 "form"                  => ["instPrf" => 0, "json" => 1],
                                 "number"                => ["instPrf" => 0]
-                            ],
-    "crmFields"         =>  [   "idcrmfield"            => ["instPrf" => 1],
-                                "title"                 => ["instPrf" => 0],
-                                "idinstance"            => ["instPrf" => 0],
-                                "name"                  => ["instPrf" => 0]
-                            ],
+                            ],    
     "tickets"           =>  [   "idticket"              => ["instPrf" => 1, "pk" => 1],
                                 "name"                  => ["instPrf" => 0],
                                 "title"                 => ["instPrf" => 0, "tt" => 1],
