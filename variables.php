@@ -60,23 +60,97 @@ $tabsInOutV5  = [
 $tabsInOutV56_part2 = [
     // skupina 3 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     // skupina 4 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    "records"           =>  [   "idrecord"              =>  ["instPrf" => 1, "pk" => 1],
-                                "iduser"                =>  ["instPrf" => 1, "fk" => "users"],
-                                "idqueue"               =>  ["instPrf" => 1, "fk" => "queues"],
-                                "idstatus"              =>  ["instPrf" => 1, "fk" => "statuses"],
-                                "iddatabase"            =>  ["instPrf" => 1, "fk" => "databases"],
-                                "number"                =>  ["instPrf" => 0],
-                                "idcall"                =>  ["instPrf" => 1, "fk" => "calls"],
-                                "action"                =>  ["instPrf" => 0],
-                                "edited"                =>  ["instPrf" => 0, "ti" => 1],
-                                "created"               =>  ["instPrf" => 0],
-                                "idinstance"            =>  ["instPrf" => 0],
-                                "form"                  =>  ["instPrf" => 0, "json" => 0]               // "json" => <0/1> ~ jen rozparsovat / rozparsovat a pokračovat ve zpracování hodnoty
-                            ]
     // skupina 5 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ];
 $tabsInOutV6_part2 = [            // vstupně-výstupní tabulky používané pouze u Daktely v6
     // skupina 5 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    // skupina 6 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    // skupina 7 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+];
+$tabsInOut = [
+    5                   =>  array_merge($tabsInOutV56_part1, $tabsInOutV5, $tabsInOutV56_part2),
+    6                   =>  array_merge($tabsInOutV56_part1, $tabsInOutV6_part1, $tabsInOutV56_part2, $tabsInOutV6_part2)
+];
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// jen výstupní tabulky
+$tabsOutOnlyV56 = [         // tabulky, které vytváří transformace a objevují se až na výstupu (nejsou ve vstupním bucketu KBC) používané u Daktely v5 i v6
+    "fieldValues"       =>  [   "idfieldvalue"          => ["instPrf" => 1, "pk" => 1],
+                                "idrecord"              => ["instPrf" => 1, "fk" => "records"],
+                                "idfield"               => ["instPrf" => 1, "fk" => "fields"],
+                                "value"                 => ["instPrf" => 0]
+                            ]
+];
+$tabsOutOnlyV6 = [          // tabulky, které vytváří transformace a objevují se až na výstupu (nejsou ve vstupním bucketu KBC) používané pouze u Daktely v6
+    "contFieldVals"     =>  [   "idcontfieldval"        => ["instPrf" => 1, "pk" => 1],
+                                "idcontact"             => ["instPrf" => 1, "fk" => "contacts"],
+                                "idfield"               => ["instPrf" => 1, "fk" => "fields"],
+                                "value"                 => ["instPrf" => 0]
+                            ],
+    "tickFieldVals"     =>  [   "idtickfieldval"        => ["instPrf" => 1, "pk" => 1],
+                                "idticket"              => ["instPrf" => 1, "fk" => "tickets"],
+                                "idfield"               => ["instPrf" => 1, "fk" => "fields"],
+                                "value"                 => ["instPrf" => 0]
+                            ],                                                  // hodnoty formulářových polí z tabulky "tickets"
+    "crmFieldVals"      =>  [   "idcrmfieldval"         => ["instPrf" => 1, "pk" => 1],
+                                "idcrmrecord"           => ["instPrf" => 1, "fk" => "crmRecords"],
+                                "idfield"               => ["instPrf" => 1, "fk" => "fields"],
+                                "value"                 => ["instPrf" => 0]
+                            ]                                                   // hodnoty z pole "item" tabulky "activities"
+];
+$tabsOutOnly = [
+    5                   =>  $tabsOutOnlyV56,
+    6                   =>  array_merge($tabsOutOnlyV56, $tabsOutOnlyV6)
+];
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// parametry parsování JSON řetězců záznamů z formulářových polí do out-only tabulek hodnot formulářových polí
+$jsonFieldsOuts = [     // <vstupní tabulka kde se nachází form. pole> => [<název out-only tabulky hodnot form. polí>, <umělý inkrementální index hodnot form. polí>]
+    "records"       =>  "fieldValues",
+    "contacts"      =>  "contFieldVals",
+    "tickets"       =>  "tickFieldVals",
+    "crmRecords"    =>  "crmFieldVals"
+];
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// jen vstupní tabulky
+$tabsInOnlyV5  = []; 
+$tabsInOnlyV56 = [
+    "fields"            =>  [   "idfield"               =>  ["instPrf" => 1, "pk" => 1],
+                                "title"                 =>  ["instPrf" => 0, "tt" => 1],
+                                "idinstance"            =>  ["instPrf" => 0, "fk" => "instances"],
+                                "name"                  =>  ["instPrf" => 0]
+                            ],
+    "records"           =>  [   "idrecord"              =>  ["instPrf" => 1, "pk" => 1],
+                            "iduser"                =>  ["instPrf" => 1, "fk" => "users"],
+                            "idqueue"               =>  ["instPrf" => 1, "fk" => "queues"],
+                            "idstatus"              =>  ["instPrf" => 1, "fk" => "statuses"],
+                            "iddatabase"            =>  ["instPrf" => 1, "fk" => "databases"],
+                            "number"                =>  ["instPrf" => 0],
+                            "idcall"                =>  ["instPrf" => 1, "fk" => "calls"],
+                            "action"                =>  ["instPrf" => 0],
+                            "edited"                =>  ["instPrf" => 0, "ti" => 1],
+                            "created"               =>  ["instPrf" => 0],
+                            "idinstance"            =>  ["instPrf" => 0],
+                            "form"                  =>  ["instPrf" => 0, "json" => 0]               // "json" => <0/1> ~ jen rozparsovat / rozparsovat a pokračovat ve zpracování hodnoty
+                        ]
+];
+$tabsInOnlyV6  = [
+    "contacts"          =>  [   "idcontact"             => ["instPrf" => 1, "pk" => 1],
+                                "name"                  => ["instPrf" => 0],
+                                "title"                 => ["instPrf" => 0, "tt" => 1],
+                                "firstname"             => ["instPrf" => 0],
+                                "lastname"              => ["instPrf" => 0],
+                                "idaccount"             => ["instPrf" => 1, "fk" => "accounts"],
+                                "iduser"                => ["instPrf" => 1, "fk" => "users"],
+                                "description"           => ["instPrf" => 0],
+                                "deleted"               => ["instPrf" => 0],
+                                "idinstance"            => ["instPrf" => 0, "fk" => "instances"],
+                                "form"                  => ["instPrf" => 0, "json" => 1],
+                                "number"                => ["instPrf" => 0]
+                            ],
+    "crmFields"         =>  [   "idcrmfield"            => ["instPrf" => 1],
+                                "title"                 => ["instPrf" => 0],
+                                "idinstance"            => ["instPrf" => 0],
+                                "name"                  => ["instPrf" => 0]
+                            ],
     "tickets"           =>  [   "idticket"              => ["instPrf" => 1, "pk" => 1],
                                 "name"                  => ["instPrf" => 0],
                                 "title"                 => ["instPrf" => 0, "tt" => 1],
@@ -109,7 +183,6 @@ $tabsInOutV6_part2 = [            // vstupně-výstupní tabulky používané po
                                 "idinstance"            => ["instPrf" => 0, "fk" => "instances"],
                                 "form"                  => ["instPrf" => 0, "json" => 0]
                             ],
-    // skupina 6 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     "crmRecords"        =>  [   "idcrmrecord"           => ["instPrf" => 1, "pk" => 1],
                                 "name"                  => ["instPrf" => 0],    
                                 "title"                 => ["instPrf" => 0, "tt" => 1],
@@ -127,80 +200,6 @@ $tabsInOutV6_part2 = [            // vstupně-výstupní tabulky používané po
                                 "idinstance"            => ["instPrf" => 0, "fk" => "instances"],
                                 "form"                  => ["instPrf" => 0, "json" => 0]
                             ]
-    // skupina 7 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-];
-$tabsInOut = [
-    5                   =>  array_merge($tabsInOutV56_part1, $tabsInOutV5, $tabsInOutV56_part2),
-    6                   =>  array_merge($tabsInOutV56_part1, $tabsInOutV6_part1, $tabsInOutV56_part2, $tabsInOutV6_part2)
-];
-// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// jen výstupní tabulky
-$tabsOutOnlyV56 = [         // tabulky, které vytváří transformace a objevují se až na výstupu (nejsou ve vstupním bucketu KBC) používané u Daktely v5 i v6
-    "fieldValues"       =>  [   "idfieldvalue"          => ["instPrf" => 1, "pk" => 1],
-                                "idrecord"              => ["instPrf" => 1, "fk" => "records"],
-                                "idfield"               => ["instPrf" => 1, "fk" => "fields"],
-                                "value"                 => ["instPrf" => 0]
-                            ]
-];
-$tabsOutOnlyV6 = [          // tabulky, které vytváří transformace a objevují se až na výstupu (nejsou ve vstupním bucketu KBC) používané pouze u Daktely v6
-    "contFieldVals"     =>  [   "idcontfieldval"        => ["instPrf" => 1, "pk" => 1],
-                                "idcontact"             => ["instPrf" => 1, "fk" => "contacts"],
-                                "idfield"               => ["instPrf" => 1, "fk" => "fields"],
-                                "value"                 => ["instPrf" => 0]
-                            ],
-    "tickFieldVals"     =>  [   "idtickfieldval"        => ["instPrf" => 1, "pk" => 1],
-                                "idticket"              => ["instPrf" => 1, "fk" => "tickets"],
-                                "idfield"               => ["instPrf" => 1, "fk" => "fields"],
-                                "value"                 => ["instPrf" => 0]
-                            ],                                                  // hodnoty formulářových polí z tabulky "tickets"
-    "crmFieldVals"      =>  [   "idcrmfieldval"         => ["instPrf" => 1, "pk" => 1],
-                                "idcrmrecord"           => ["instPrf" => 1, "fk" => "crmRecords"],
-                                "idfield"               => ["instPrf" => 1, "fk" => "fields"],
-                                "value"                 => ["instPrf" => 0]
-                            ]                                                // hodnoty z pole "item" tabulky "activities" 
-    
-];
-$tabsOutOnly = [
-    5                   =>  $tabsOutOnlyV56,
-    6                   =>  array_merge($tabsOutOnlyV56, $tabsOutOnlyV6)
-];
-// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// parametry parsování JSON řetězců záznamů z formulářových polí do out-only tabulek hodnot formulářových polí
-$jsonFieldsOuts = [     // <vstupní tabulka kde se nachází form. pole> => [<název out-only tabulky hodnot form. polí>, <umělý inkrementální index hodnot form. polí>]
-    "records"       =>  "fieldValues",
-    "contacts"      =>  "contFieldVals",
-    "tickets"       =>  "tickFieldVals",
-    "crmRecords"    =>  "crmFieldVals"
-];
-// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// jen vstupní tabulky
-$tabsInOnlyV5  = []; 
-$tabsInOnlyV56 = [
-    "fields"            =>  [   "idfield"               =>  ["instPrf" => 1, "pk" => 1],
-                                "title"                 =>  ["instPrf" => 0, "tt" => 1],
-                                "idinstance"            =>  ["instPrf" => 0, "fk" => "instances"],
-                                "name"                  =>  ["instPrf" => 0]
-                            ]
-];
-$tabsInOnlyV6  = [
-    "contacts"          =>  [   "idcontact"             => ["instPrf" => 1, "pk" => 1],
-                                "name"                  => ["instPrf" => 0],
-                                "title"                 => ["instPrf" => 0, "tt" => 1],
-                                "firstname"             => ["instPrf" => 0],
-                                "lastname"              => ["instPrf" => 0],
-                                "idaccount"             => ["instPrf" => 1, "fk" => "accounts"],
-                                "iduser"                => ["instPrf" => 1, "fk" => "users"],
-                                "description"           => ["instPrf" => 0],
-                                "deleted"               => ["instPrf" => 0],
-                                "idinstance"            => ["instPrf" => 0, "fk" => "instances"],
-                                "form"                  => ["instPrf" => 0, "json" => 1],
-                                "number"                => ["instPrf" => 0]
-                            ],
-    "crmFields"         =>  [   "idcrmfield"            => ["instPrf" => 1],
-                                "title"                 => ["instPrf" => 0],
-                                "idinstance"            => ["instPrf" => 0],
-                                "name"                  => ["instPrf" => 0]
-                            ]    
 ];
 $tabsInOnly = [
     5                   =>  array_merge($tabsInOnlyV5, $tabsInOnlyV56),
